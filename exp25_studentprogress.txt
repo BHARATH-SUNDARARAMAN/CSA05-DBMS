@@ -1,0 +1,90 @@
+
+mysql> create table student_progress
+    -> ( std_id int(10),
+    -> std_name char(20),
+    -> dbms int(3),
+    -> os int(3),
+    -> python int(3),
+    -> java int(3));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc student_progress;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| std_id   | int(10)  | YES  |     | NULL    |       |
+| std_name | char(20) | YES  |     | NULL    |       |
+| dbms     | int(3)   | YES  |     | NULL    |       |
+| os       | int(3)   | YES  |     | NULL    |       |
+| python   | int(3)   | YES  |     | NULL    |       |
+| java     | int(3)   | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+6 rows in set (0.04 sec)
+
+mysql> alter table student_progress add total int(4),grade char(2);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'grade char(2)' at line 1
+mysql> alter table student_progress add total int(4);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student_progress add grade char(2);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert into student_progress values(192011231,"ramesh",78,87,89,93,347,'A'),(192034567,"shruthi",89,90,86,94,359,'S'),(192134521,89,76,78,83,326,'A'),(192134566,76,75,69,72,292,'B');
+ERROR 1136 (21S01): Column count doesn't match value count at row 3
+mysql> desc student_progress;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| std_id   | int(10)  | YES  |     | NULL    |       |
+| std_name | char(20) | YES  |     | NULL    |       |
+| dbms     | int(3)   | YES  |     | NULL    |       |
+| os       | int(3)   | YES  |     | NULL    |       |
+| python   | int(3)   | YES  |     | NULL    |       |
+| java     | int(3)   | YES  |     | NULL    |       |
+| total    | int(4)   | YES  |     | NULL    |       |
+| grade    | char(2)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+mysql> insert into student_progress values(192011231,"ramesh",78,87,89,93,347,'A'),(192034567,"shruthi",89,90,86,94,359,'S'),(192134521,89,76,78,83,326,'A'),(192134566,76,75,69,72,292,'B');
+ERROR 1136 (21S01): Column count doesn't match value count at row 3
+mysql> insert into student_progress values(192011231,"ramesh",78,87,89,93,347,'A'),(192034567,"shruthi",89,90,86,94,359,'S'),(192134521,"ram",89,76,78,83,326,'A'),(192134566,"siddharth",76,75,69,72,292,'B');
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select*from student_progress;
++-----------+-----------+------+------+--------+------+-------+-------+
+| std_id    | std_name  | dbms | os   | python | java | total | grade |
++-----------+-----------+------+------+--------+------+-------+-------+
+| 192011231 | ramesh    |   78 |   87 |     89 |   93 |   347 | A     |
+| 192034567 | shruthi   |   89 |   90 |     86 |   94 |   359 | S     |
+| 192134521 | ram       |   89 |   76 |     78 |   83 |   326 | A     |
+| 192134566 | siddharth |   76 |   75 |     69 |   72 |   292 | B     |
++-----------+-----------+------+------+--------+------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select std_id,total,
+    -> case
+    -> when total>350 then "excellent"
+    -> when total>300 then "very good"
+    -> when total>250 then "good"
+    -> else "average"
+    -> end as comments
+    -> from student_progress;
++-----------+-------+-----------+
+| std_id    | total | comments  |
++-----------+-------+-----------+
+| 192011231 |   347 | very good |
+| 192034567 |   359 | excellent |
+| 192134521 |   326 | very good |
+| 192134566 |   292 | good      |
++-----------+-------+-----------+
+4 rows in set (0.04 sec)
+
+mysql>
+
+
+
+
