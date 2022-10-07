@@ -1,0 +1,59 @@
+
+mysql> create table library
+    -> ( book_no int(3),
+    -> book_name char(10),
+    -> author_name char(10),
+    -> cost int(5),
+    -> edition int(2));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into library values(130,"war","bharath",2000,1),(132,"simp","nattu",500,2),(135,"ps","kalki",4000,5);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from library;
++---------+-----------+-------------+------+---------+
+| book_no | book_name | author_name | cost | edition |
++---------+-----------+-------------+------+---------+
+|     130 | war       | bharath     | 2000 |       1 |
+|     132 | simp      | nattu       |  500 |       2 |
+|     135 | ps        | kalki       | 4000 |       5 |
++---------+-----------+-------------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> alter table library add published_year int(4);
+Query OK, 3 rows affected (0.07 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> update library set published_year=2022 where book_no=130;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update library set published_year=2016 where book_no=132;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update library set published_year=1956 where book_no=135;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from library;
++---------+-----------+-------------+------+---------+----------------+
+| book_no | book_name | author_name | cost | edition | published_year |
++---------+-----------+-------------+------+---------+----------------+
+|     130 | war       | bharath     | 2000 |       1 |           2022 |
+|     132 | simp      | nattu       |  500 |       2 |           2016 |
+|     135 | ps        | kalki       | 4000 |       5 |           1956 |
++---------+-----------+-------------+------+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select author_name from library where book_name="war";
++-------------+
+| author_name |
++-------------+
+| bharath     |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>
+
