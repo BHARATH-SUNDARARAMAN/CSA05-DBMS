@@ -47,3 +47,5 @@
 [ SQL Queries](https://github.com/BHARATH-SUNDARARAMAN/CSA0526-DBMS-192011038/blob/main/exp23_hospital.txt)
 ## Experiment 24_cars
 [ SQL Queries](https://github.com/BHARATH-SUNDARARAMAN/CSA0526-DBMS-192011038/blob/main/exp24_cars.txt)
+## Experiment 25_studentprogress
+[ SQL Queries](https://github.com/BHARATH-SUNDARARAMAN/CSA0526-DBMS-192011038/blob/main/exp25_studentprogress.txt)
