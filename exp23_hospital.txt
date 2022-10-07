@@ -1,0 +1,96 @@
+
+mysql> use bharath;
+Database changed
+mysql> create table hospital
+    -> ( p_id int(3),
+    -> p_name char(20),
+    -> disorder char(10),
+    -> age int(3),
+    -> phn.no int(10));
+ERROR 1103 (42000): Incorrect table name 'phn'
+mysql> create table hospital
+    -> ( p_id int(3),
+    -> p_name char(20),
+    -> disorder char(10),
+    -> age int(3),
+    -> phn_no int(10));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into hospital values(23,"suresh","fever",23,1234567890),(21,"ramesh","flu",17,7865439023),(34,"nattu","disentry",20,9876543021);
+ERROR 1264 (22003): Out of range value for column 'phn_no' at row 2
+mysql> insert into hospital values(23,"suresh","fever",23,1234567890),(21,"ramesh","flu",17,7865439023),(34,"nattu","disentry",20,987654302);
+ERROR 1264 (22003): Out of range value for column 'phn_no' at row 2
+mysql> insert into hospital values(23,"suresh","fever",23,123456789),(21,"ramesh","flu",17,786543902),(34,"nattu","disentry",20,987654302);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from hospital;
++------+--------+----------+------+-----------+
+| p_id | p_name | disorder | age  | phn_no    |
++------+--------+----------+------+-----------+
+|   23 | suresh | fever    |   23 | 123456789 |
+|   21 | ramesh | flu      |   17 | 786543902 |
+|   34 | nattu  | disentry |   20 | 987654302 |
++------+--------+----------+------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> create table doctor
+    -> (doc_id int(2),
+    -> doc_name char(20),
+    -> specialization char(20),
+    -> phone int(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into doctor values(10,"bharath","cardiologist",456372891),(12,"shruthi","gynaecologist",234567890);
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select*from doctor;
++--------+----------+----------------+-----------+
+| doc_id | doc_name | specialization | phone     |
++--------+----------+----------------+-----------+
+|     10 | bharath  | cardiologist   | 456372891 |
+|     12 | shruthi  | gynaecologist  | 234567890 |
++--------+----------+----------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> desc hospital;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| p_id     | int(3)   | YES  |     | NULL    |       |
+| p_name   | char(20) | YES  |     | NULL    |       |
+| disorder | char(10) | YES  |     | NULL    |       |
+| age      | int(3)   | YES  |     | NULL    |       |
+| phn_no   | int(10)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> desc doctor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| doc_id         | int(2)   | YES  |     | NULL    |       |
+| doc_name       | char(20) | YES  |     | NULL    |       |
+| specialization | char(20) | YES  |     | NULL    |       |
+| phone          | int(10)  | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> select doc_name from doctor where doc_id=12;
++----------+
+| doc_name |
++----------+
+| shruthi  |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select disorder from hospital where p_name="nattu";
++----------+
+| disorder |
++----------+
+| disentry |
++----------+
+1 row in set (0.00 sec)
+
+mysql>
