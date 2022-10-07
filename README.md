@@ -43,3 +43,5 @@
 [ SQL Queries](https://github.com/BHARATH-SUNDARARAMAN/CSA0526-DBMS-192011038/blob/main/exp21_tableHRM(advanced).txt)
 ## Experiment 22_bookcompany
 [ SQL Queries](https://github.com/BHARATH-SUNDARARAMAN/CSA0526-DBMS-192011038/blob/main/exp22_bookcompany.txt)
+## Experiment 23_hospital
+[ SQL Queries](https://github.com/BHARATH-SUNDARARAMAN/CSA0526-DBMS-192011038/blob/main/exp23_hospital.txt)
